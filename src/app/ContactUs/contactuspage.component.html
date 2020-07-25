@@ -1,1 +1,104 @@
-<p>contactuspage works!</p>
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body">
+      <form novalidate
+            (ngSubmit)="sendQuery()"
+            [formGroup]="queryForm">
+  
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="personNameId">Your Name</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="personNameId"
+                   type="text"
+                   placeholder="Your Name (required)"
+                   formControlName="personName"
+                   [ngClass]="{'is-invalid': displayMessage.personName }" />
+            <span class="invalid-feedback">
+              {{displayMessage.personName}}
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="personEmailId">Your Email</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="personEmailId"
+                   type="text"
+                   placeholder="Your Email (required)"
+                   formControlName="personEmail"
+                   [ngClass]="{'is-invalid': displayMessage.personEmail}" />
+            <span class="invalid-feedback">
+              {{displayMessage.personEmail}}
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="personMobileId">Your Mobile</label>
+  
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="personMobileId"
+                   type="text"
+                   placeholder="Your Mobile No (required)"
+                   formControlName="personMobile"
+                   [ngClass]="{'is-invalid': displayMessage.personMobile}" />
+            <span class="invalid-feedback">
+              {{displayMessage.personMobile}}
+            </span>
+          </div>
+        </div>
+        
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="descriptionId">Your Query</label>
+  
+          <div class="col-md-8">
+            <textarea class="form-control"
+                      id="queryTextId"
+                      placeholder="Your Query (required)"
+                      rows=3
+                      formControlName="queryText"
+                      [ngClass]="{'is-invalid': displayMessage.queryText}"></textarea>
+            <span class="invalid-feedback">
+              {{ displayMessage.queryText}}
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group row mb-2">
+          <div class="offset-md-2 col-md-4">
+            <button class="btn btn-primary mr-3"
+                    style="width:140px;"
+                    type="submit"
+                    [title]="queryForm.valid ? 'Send your query' : 'Disabled until the form is filled'"
+                    [disabled]="!queryForm.valid">
+              Send Query
+            </button>
+            <button class="btn btn-outline-secondary mr-3"
+                    style="width:80px;"
+                    type="button"
+                    title="Cancel your edits"
+                    [routerLink]="['/home']">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    <div class="alert alert-danger"
+         *ngIf="errorMessage">{{errorMessage}}
+    </div>
+    <div class="alert alert-danger"
+         *ngIf="querySentMessage">{{querySentMessage}}
+    </div>
+  </div>

@@ -7,6 +7,7 @@ const routes: Routes =
 [
   {path:'home',component:HomepageComponent},
   {path:'contact-us',component:ContactuspageComponent},
+  {path:'home/contact-us',component:ContactuspageComponent},
   {path:'',component:HomepageComponent,pathMatch:"full"},
   {path:'**',component:HomepageComponent,pathMatch:"full"}
 ];
